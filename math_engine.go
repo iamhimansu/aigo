@@ -2,16 +2,6 @@ package main
 
 import "fmt"
 
-// YOUR JOB: Write the dotProduct function here
-
-func main() {
-	vectorA := []float64{0.1, 0.5, -0.2}
-	vectorB := []float64{0.4, -0.1, 0.8}
-
-	result := dotProduct(vectorA, vectorB)
-	fmt.Printf("The dot product is: %f\n", result)
-}
-
 func dotProduct(a []float64, b []float64) float64 {
 	aLength := len(a)
 	bLength := len(b)
@@ -28,4 +18,12 @@ func dotProduct(a []float64, b []float64) float64 {
 	}
 
 	return sum
+}
+
+func main() {
+	vectorA := []float64{0.1, 0.5, -0.2}
+	vectorB := []float64{0.4, -0.1, 0.8}
+
+	result := dotProduct(vectorA, vectorB)
+	fmt.Printf("The dot product is: %f\n", result)
 }
