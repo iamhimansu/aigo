@@ -33,19 +33,40 @@ func saveWeights(weights []float64, filename string) {
 	if jerr != nil {
 		panic("INVALID WEIGHTS")
 	}
-	werr := os.WriteFile("./brain.json", optimizedWeights, 0644)
-	if werr != nil {
+
+	if werr := os.WriteFile(filename, optimizedWeights, 0644); werr != nil {
 		panic("Could not save brain")
 	}
 
 }
 
+func loadWeights(filename string) ([]float64, error) {
+	bytes, err := os.ReadFile(filename)
+	if err != nil {
+		// Instead of crashing, we return the error to the caller
+		return nil, err
+	}
+
+	var weights []float64
+	if err := json.Unmarshal(bytes, &weights); err != nil {
+		return nil, err
+	}
+
+	return weights, nil
+}
+
 func main() {
+	filename := "brain.json"
 	// These are the highly optimized weights your AI learned in the last lesson
-	trainedWeights := []float64{1.4831296806411502, 1.4831296806411502}
+	trainedWeights := []float64{0.5, 0.5}
 
+	if weights, err := loadWeights(filename); err == nil {
+		trainedWeights = weights
+		fmt.Println("Loaded existing brain!")
+	} else {
+		fmt.Println("No brain found, starting fresh!")
+	}
 	// We will save them to a file named 'brain.json'
-	saveWeights(trainedWeights, "brain.json")
-
+	saveWeights(trainedWeights, filename)
 	fmt.Println("Brain successfully extracted and saved to brain.json")
 }
