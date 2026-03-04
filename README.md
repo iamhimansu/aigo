@@ -23,6 +23,19 @@ A step-by-step learning project that builds a neural network from the ground up.
 | 15 | `15_tokenizer_decode/` | Detokenization — IDs back to words |
 | 16 | `16_text_generator/` | Bigram text generation |
 
+## Architecture
+
+See the full architecture breakdown with detailed Mermaid diagrams:
+
+👉 **[docs/architecture.md](docs/architecture.md)**
+
+Includes:
+- **Step-by-step flowcharts** — internal logic of every module
+- **Mindmap** — bird's-eye view of all 7 phases and functions
+- **Tree view** — complete project file/function hierarchy
+- **Data flow sequence** — how data moves through the training cycle
+- **Function dependency graph** — which lessons reuse which functions
+
 ## Usage
 
 Run any lesson individually:
